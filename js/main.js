@@ -41,9 +41,10 @@ function setLeaders(leaders) {
 }
 
 /*--- websocket init and handlers ---*/
-
-// var ws = new ReconnectingWebSocket('ws://localhost:9001/leaderboard');
-var ws = new ReconnectingWebSocket('ws://gamebus-boards-production.apps-test.redhatkeynote.com/leaderboard');
+let hostname = location.hostname;
+hostname = hostname.replace('leaderboard','vertx-game-server');
+let socketUrl = 'ws://' + hostname + '/leaderboard';
+var ws = new ReconnectingWebSocket(socketUrl);
 ws.onopen = function wsOpen() { console.log('websocket connection open'); };
 ws.onclose = function wsClose() { console.log('websocket connection closed'); };
 ws.onmessage = function wsMessage(msg) {
