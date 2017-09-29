@@ -42,7 +42,7 @@ function setLeaders(leaders) {
 
 /*--- websocket init and handlers ---*/
 let hostname = location.hostname;
-hostname = hostname.replace('leaderboard','gamebus-boards');
+hostname = hostname.replace('leaderboard','vertx-game-server');
 let socketUrl = 'ws://' + hostname + '/leaderboard';
 var ws = new ReconnectingWebSocket(socketUrl);
 ws.onopen = function wsOpen() { console.log('websocket connection open'); };
